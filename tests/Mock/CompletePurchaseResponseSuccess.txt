@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 400
+
+{"ResultCode":"Success","ResultMessage":"","Data":{"IsSuccessful":true,"PaymentDetail":{"PaymentStatus":2,"TrxStatus":1,"VirtualPosOrderId":"moka-order-123456","OtherTrxCode":"ORDER-3D-12345","Amount":1.50,"Currency":"TL"}}}

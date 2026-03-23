@@ -1,0 +1,6 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true
+}

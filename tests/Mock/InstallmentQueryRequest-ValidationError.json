@@ -1,0 +1,10 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "amount": "100.00",
+  "currency": "TL",
+  "installment": 3
+}

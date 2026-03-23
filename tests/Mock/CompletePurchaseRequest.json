@@ -1,0 +1,9 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "otherTrxCode": "ORDER-3D-12345",
+  "trxCode": "moka-trx-code-789"
+}

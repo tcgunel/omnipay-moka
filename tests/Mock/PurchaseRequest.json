@@ -1,0 +1,27 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "transactionId": "ORDER-12345",
+  "amount": "1.50",
+  "currency": "TRY",
+  "card": {
+    "firstName": "Example",
+    "lastName": "User",
+    "number": "5269111122223332",
+    "expiryMonth": "01",
+    "expiryYear": "2030",
+    "cvv": "123",
+    "billingAddress1": "123 Billing St",
+    "billingAddress2": "Billsville",
+    "billingCity": "Istanbul",
+    "billingPostcode": "34000",
+    "billingState": "",
+    "billingCountry": "TR",
+    "billingPhone": "5554443322"
+  },
+  "clientIp": "127.0.0.1",
+  "installment": 1
+}

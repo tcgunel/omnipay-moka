@@ -1,0 +1,12 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "binNumber": "526911",
+  "amount": "100.00",
+  "currency": "TRY",
+  "installment": 3,
+  "isThreeD": 0
+}

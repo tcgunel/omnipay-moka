@@ -1,0 +1,10 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "card": {
+    "number": "abc"
+  }
+}

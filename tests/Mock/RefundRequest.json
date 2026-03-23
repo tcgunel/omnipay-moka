@@ -1,0 +1,10 @@
+{
+  "merchantId": "TestDealer",
+  "merchantUser": "TestUser",
+  "merchantPassword": "TestPass",
+  "testMode": true,
+
+  "virtualPosOrderId": "moka-order-123456",
+  "transactionId": "ORDER-12345",
+  "amount": "9.99"
+}

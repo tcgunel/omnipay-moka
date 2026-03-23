@@ -9,76 +9,76 @@ use Psr\Http\Message\ResponseInterface;
 
 class BinLookupResponse extends AbstractResponse
 {
-	protected $response;
+    protected $response;
 
-	protected $request;
+    protected $request;
 
-	public function __construct(RequestInterface $request, $data)
-	{
-		parent::__construct($request, $data);
+    public function __construct(RequestInterface $request, $data)
+    {
+        parent::__construct($request, $data);
 
-		$this->request = $request;
+        $this->request = $request;
 
-		$this->response = $data;
+        $this->response = $data;
 
-		if ($data instanceof ResponseInterface) {
+        if ($data instanceof ResponseInterface) {
 
-			$body = (string) $data->getBody();
+            $body = (string) $data->getBody();
 
-			try {
+            try {
 
-				$this->response = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+                $this->response = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
-			} catch (JsonException $e) {
+            } catch (JsonException $e) {
 
-				$this->response = [
-					'ResultCode'    => 'JsonError',
-					'ResultMessage' => $body,
-					'Data'          => null,
-				];
+                $this->response = [
+                    'ResultCode' => 'JsonError',
+                    'ResultMessage' => $body,
+                    'Data' => null,
+                ];
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 
-	public function isSuccessful(): bool
-	{
-		return ($this->response['ResultCode'] ?? '') === 'Success';
-	}
+    public function isSuccessful(): bool
+    {
+        return ($this->response['ResultCode'] ?? '') === 'Success';
+    }
 
-	public function getCreditType(): ?string
-	{
-		return $this->response['Data']['CreditType'] ?? null;
-	}
+    public function getCreditType(): ?string
+    {
+        return $this->response['Data']['CreditType'] ?? null;
+    }
 
-	public function getMaxInstallmentNumber(): ?int
-	{
-		return $this->response['Data']['MaxInstallmentNumber'] ?? null;
-	}
+    public function getMaxInstallmentNumber(): ?int
+    {
+        return $this->response['Data']['MaxInstallmentNumber'] ?? null;
+    }
 
-	public function getMessage(): ?string
-	{
-		return $this->response['ResultMessage'] ?? null;
-	}
+    public function getMessage(): ?string
+    {
+        return $this->response['ResultMessage'] ?? null;
+    }
 
-	public function getCode(): ?string
-	{
-		return $this->response['ResultCode'] ?? null;
-	}
+    public function getCode(): ?string
+    {
+        return $this->response['ResultCode'] ?? null;
+    }
 
-	public function getData(): array
-	{
-		return $this->response;
-	}
+    public function getData(): array
+    {
+        return $this->response;
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 
-	public function getRedirectUrl(): string
-	{
-		return '';
-	}
+    public function getRedirectUrl(): string
+    {
+        return '';
+    }
 }

@@ -1,0 +1,56 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Moka\\\\Gateway\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Gateway.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 2
+			path: src/Message/BinLookupRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Moka\\\\Message\\\\BinLookupResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/BinLookupResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Moka\\\\Message\\\\CompletePurchaseResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Moka\\\\Message\\\\InstallmentQueryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/InstallmentQueryResponse.php
+
+		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Message/PurchaseRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Moka\\\\Message\\\\RefundResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/RefundResponse.php
+
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Moka\\\\Message\\\\RemoteAbstractRequest\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
+
+		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: src/Message/VoidRequest.php
+
+		-
+			message: "#^Method Omnipay\\\\Moka\\\\Message\\\\VoidResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/VoidResponse.php

@@ -9,81 +9,81 @@ use Omnipay\Moka\Tests\TestCase;
 
 class BinLookupTest extends TestCase
 {
-	/**
-	 * @throws \JsonException
-	 */
-	public function test_bin_lookup_request()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest.json");
+    /**
+     * @throws \JsonException
+     */
+    public function test_bin_lookup_request()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$data = $request->getData();
+        $data = $request->getData();
 
-		self::assertEquals('TestDealer', $data['PaymentDealerAuthentication']['DealerCode']);
-		self::assertEquals('526911', $data['PaymentDealerRequest']['BinNumber']);
-	}
+        self::assertEquals('TestDealer', $data['PaymentDealerAuthentication']['DealerCode']);
+        self::assertEquals('526911', $data['PaymentDealerRequest']['BinNumber']);
+    }
 
-	public function test_bin_lookup_request_validation_error()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest-ValidationError.json");
+    public function test_bin_lookup_request_validation_error()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest-ValidationError.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$this->expectException(InvalidCreditCardException::class);
+        $this->expectException(InvalidCreditCardException::class);
 
-		$request->getData();
-	}
+        $request->getData();
+    }
 
-	public function test_bin_lookup_request_with_bin_number_param()
-	{
-		$options = [
-			'merchantId'       => 'TestDealer',
-			'merchantUser'     => 'TestUser',
-			'merchantPassword' => 'TestPass',
-			'binNumber'        => '526911',
-		];
+    public function test_bin_lookup_request_with_bin_number_param()
+    {
+        $options = [
+            'merchantId' => 'TestDealer',
+            'merchantUser' => 'TestUser',
+            'merchantPassword' => 'TestPass',
+            'binNumber' => '526911',
+        ];
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$data = $request->getData();
+        $data = $request->getData();
 
-		self::assertEquals('526911', $data['PaymentDealerRequest']['BinNumber']);
-	}
+        self::assertEquals('526911', $data['PaymentDealerRequest']['BinNumber']);
+    }
 
-	public function test_bin_lookup_response_success()
-	{
-		$httpResponse = $this->getMockHttpResponse('BinLookupResponseSuccess.txt');
+    public function test_bin_lookup_response_success()
+    {
+        $httpResponse = $this->getMockHttpResponse('BinLookupResponseSuccess.txt');
 
-		$response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
+        $response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
 
-		$this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isSuccessful());
 
-		$this->assertEquals('CreditCard', $response->getCreditType());
+        $this->assertEquals('CreditCard', $response->getCreditType());
 
-		$this->assertEquals(12, $response->getMaxInstallmentNumber());
+        $this->assertEquals(12, $response->getMaxInstallmentNumber());
 
-		$this->assertEquals('Success', $response->getCode());
-	}
+        $this->assertEquals('Success', $response->getCode());
+    }
 
-	public function test_bin_lookup_response_api_error()
-	{
-		$httpResponse = $this->getMockHttpResponse('BinLookupResponseApiError.txt');
+    public function test_bin_lookup_response_api_error()
+    {
+        $httpResponse = $this->getMockHttpResponse('BinLookupResponseApiError.txt');
 
-		$response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
+        $response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
 
-		$this->assertFalse($response->isSuccessful());
+        $this->assertFalse($response->isSuccessful());
 
-		$this->assertEquals('BinNumber bos olamaz', $response->getMessage());
-	}
+        $this->assertEquals('BinNumber bos olamaz', $response->getMessage());
+    }
 }
